@@ -1,11 +1,8 @@
 import pygame
-<<<<<<< HEAD
 background_colour = (255,255,255)
 (width, height) = (300, 200)
-=======
 background_colour = (255, 255, 255)
 (width, height) = (500, 500)
->>>>>>> b7d4b498350ec6a4eca12a5d4009484d4f98b413
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Design')
 screen.fill(background_colour)
@@ -24,7 +21,7 @@ class Drawing(RelativeLayout):
         self.add_widget(pb)
 
     # On mouse movement how Paint_brush behave
-    def on_touch_move(self, touch): 
+    def on_touch_move(self, touch):
         pb = Paint_brush()
         pb.center = touch.pos
         self.add_widget(pb)

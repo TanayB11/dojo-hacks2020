@@ -6,11 +6,11 @@ from tensorflow.python.keras.models import model_from_json
 def extract_data_predict(path):
     data = []
     image = cv2.imread(path)
-    image = cv2.resize(image, (64, 64))
+    image = cv2.resize(image, (32, 32))
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     data.append(image)
     data = np.array(data)
-    return (data.reshape(1, 64, 64, 1))
+    return (data.reshape(1, 32, 32, 1))
 
 def normalize_predict(arr):
 	norm = arr.astype('float32')
@@ -31,7 +31,7 @@ with open('char_dict', 'rb') as f:
 char_dict = dict([(value, key) for key, value in char_dict.items()])
 
 # Use the model to predict an image
-test_img = '../data/test1.jpg' #TODO: Change to image
+test_img = 'test-imgs/test1.jpg' #TODO: Change to image
 sample = normalize_predict(extract_data_predict(test_img))
 sample = model.predict(sample)
 

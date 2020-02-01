@@ -34,3 +34,19 @@ while not exit:
 
 pygame.quit()
 quit()
+# convert to postscript file
+cv = turtle.getcanvas()
+cv.postscript(file= "file_name.ps")
+turtle.done()
+# postscript to png? list
+import os, glob
+#convert p
+list = glob.glob('*.ps')
+
+for file in list:
+
+    root = file[:-2]
+    pdffile = root + 'pdf'
+    pngfile = root + 'png'
+    os.system('convert ' + file + ' ' + pdffile)
+    os.system('convert ' + file + ' ' + pngfile)

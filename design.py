@@ -1,5 +1,5 @@
 import pygame
-background_colour = (32, 118, 176)
+background_colour = (255, 255, 255)
 (width, height) = (500, 500)
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Design')
@@ -9,4 +9,4 @@ running = True
 while running:
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
-      running = False 
+      running = False

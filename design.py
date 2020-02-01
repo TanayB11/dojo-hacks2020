@@ -1,6 +1,8 @@
 import pygame
+<<<<<<< HEAD
 background_colour = (255,255,255)
 (width, height) = (300, 200)
+=======
 background_colour = (255, 255, 255)
 (width, height) = (500, 500)
 screen = pygame.display.set_mode((width, height))
@@ -16,12 +18,6 @@ class Drawing(RelativeLayout):
 
     # On mouse press how Paint_brush behave
     def on_touch_down(self, touch):
-        pb = Paint_brush()
-        pb.center = touch.pos
-        self.add_widget(pb)
-
-    # On mouse movement how Paint_brush behave
-    def on_touch_move(self, touch):
         pb = Paint_brush()
         pb.center = touch.pos
         self.add_widget(pb)

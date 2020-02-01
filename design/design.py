@@ -1,7 +1,6 @@
 import pygame
-background_colour = (255,255,255)
-(width, height) = (300, 200)
-background_colour = (255, 255, 255)
+background_colour = (18, 18, 18)
+
 (width, height) = (500, 500)
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Design')
@@ -12,6 +11,7 @@ while running:
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       running = False
+
 class Drawing(RelativeLayout):
 
     # On mouse press how Paint_brush behave

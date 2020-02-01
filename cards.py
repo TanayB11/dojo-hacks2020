@@ -106,12 +106,11 @@ def load(input):
 #saves the statae of each card in their filename attribute's file
 #contrast with save which stores it all in one file
 def save_all(cards):
-  import argopen
   outputs = {}
   try:
     for card in cards:
       if card.filename not in outputs:
-        outputs[card.filename] = argopen.open(card.filename, 'w')
+        outputs[card.filename] = open(card.filename, 'w')
       save(outputs[card.filename], [card])
   finally:
     for output in outputs.values():
@@ -120,9 +119,8 @@ def save_all(cards):
 #loads from each individual filename of each card
 #still a generator function
 def load_all(filenames):
-  import argopen
   for filename in filenames:
-    with argopen.open(filename) as input:
+    with open(filename) as input:
       for card in load(input):
         card.filename = filename
         yield card

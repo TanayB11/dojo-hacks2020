@@ -7,7 +7,6 @@ Created on Sat Feb  1 14:39:23 2020
 import cards
 import argparse
 import datetime
-import random
 
 def review_c(card):
     print("Question: define this and give pinyin   " + card.top)

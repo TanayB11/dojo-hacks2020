@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-NAME
-----
-fulgurate-import - convert a two-column TSV file to a flashcard file
-SYNOPSIS
---------
-*fulgurate-import* ['OPTIONS'] TSV-FILE [CARDS-FILE]
-DESCRIPTION
------------
+Created on Sat Feb  1 16:18:08 2020
 
+@author: aaron
 """
 
+
+
 import cards
+import pandas as pd
+
 
 def load_data(input):
   for i, line in enumerate(input, 1):
@@ -24,16 +22,28 @@ def load_data(input):
 
 if __name__ == "__main__":
   import datetime
-  #import getopt
   import argparse
   
   ap = argparse.ArgumentParser();
-  ap.add_argument("-t", "--tsv", required=True, help="file with notecard data")
   ap.add_argument("-o", "--output", required=True, help="output file, usu example.cards")
-  args = vars(ap.parse_args())
-  now = datetime.datetime.now()
+  ap.add_argument("-x", "--excel_dataset", required=False,default = 'decks/temp.xlsx',
+                  help="file with notecard data")
   
-  inputFile = open(args["tsv"], 'r')
+  args = vars(ap.parse_args())
+  df = pd.read_excel('decks/temp.xlsx').to_dict()
+  print(df)
+  now = datetime.datetime.now()
+  #not the same output File
   outputFile = open(args["output"], 'w')
+  for column in df.keys():
+      for key in df[column]:
+          #print(key)
+          #print(type(df[column][key]))
+          print(str(key) + '\t' + str(df[column][key]), file = outputFile)
+  
+  inputFile = open(outputFile, 'r');
+  outputFile = open(args["output"], 'w');
+  #inputFile = open(args["tsv"], 'r')
+  #outputFile = open(args["output"], 'w')
   cards.save(outputFile, (cards.card(top, bot, now) for top, bot in load_data(inputFile)))
   

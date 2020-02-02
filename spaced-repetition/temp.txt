@@ -1,3 +1,0 @@
-shang	temp1
-yi	temp2
-me	temp3

@@ -2,15 +2,13 @@ import json, pickle, cv2
 import numpy as np
 from tensorflow.python.keras.models import model_from_json
 
-drawing=False
-mode=True
 # These two are for preprocessing inputs to the model
 def extract_data_predict(path):
     data = []
-    im = cv2.imread(path)
-    im = cv2.resize(im, (32, 32))
-    im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-    data.append(im)
+    image = cv2.imread(path)
+    image = cv2.resize(image, (32, 32))
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    data.append(image)
     data = np.array(data)
     return (data.reshape(1, 32, 32, 1))
 
@@ -34,10 +32,18 @@ def prediction():
     char_dict = dict([(value, key) for key, value in char_dict.items()])
 
     # Use the model to predict an image
-    test_img = 'image.png' #TODO: Change to image
+    test_img = '../drawing/image.png' #TODO: Change to image
     sample = normalize_predict(extract_data_predict(test_img))
     sample = model.predict(sample)
 
+    # Print all predictions and probabiliites
+    with open('../logs/predictions.txt', 'w') as f:
+        for i in range(len(sample[0])):
+            pred = str(i) + ' ' + char_dict.get(i) + ' ' + str(sample[0][i]) + '\n'
+            f.write(pred)
+            print(pred)
+
     # Final prediction
     maxindex = sample.argmax() # Index of largest item
+    print('Prediction: ', maxindex, char_dict.get(maxindex), ' ', sample[0][maxindex])
     return char_dict.get(maxindex)

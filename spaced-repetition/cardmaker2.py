@@ -6,7 +6,7 @@ Created on Sat Feb  1 16:18:08 2020
 """
 # Convert excel file to a deck of cards
 
-import cards
+import cards, os
 import pandas as pd
 
 
@@ -52,3 +52,4 @@ if __name__ == "__main__":
   #inputFile = open(args["tsv"], 'r')
   #outputFile = open(args["output"], 'w')
   cards.save(outputFile, (cards.card(top, bot, now) for top, bot in load_data(inputFile)))
+  os.system('clear')

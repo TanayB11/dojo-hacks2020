@@ -35,14 +35,14 @@ def paint_draw(event,former_x,former_y,flags,param):
 def get_img():
     # Displaying the image
     cv2.resize(image, (250, 250))
-    cv2.namedWindow('hi')
-    cv2.setMouseCallback('hi',paint_draw)
+    cv2.namedWindow('Handwriting')
+    cv2.setMouseCallback('Handwriting',paint_draw)
     while(1):
-        cv2.imshow('hi',image)
+        cv2.imshow('Handwriting',image)
         k=cv2.waitKey(1)
         if k==32: #space KEY
             cv2.imwrite("image.png",image)
-            cv2.destroyAllWindows()
+            cv2.destroyWindow('Handwriting')
             break
 
 def review_c(card):
@@ -51,6 +51,7 @@ def review_c(card):
     # os.system('clear')
     answer = predict.prediction()
     if (answer==card.top):
+        os.system('clear')
         print('CORRECT!')
         return 5
     else:

@@ -1,3 +1,4 @@
-shang	temp1
-yi	temp2
-me	temp3
+人	ren
+中	zhong
+上	shang
+一	yi

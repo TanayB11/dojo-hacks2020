@@ -2,7 +2,7 @@
 """
 Created on Sat Feb  1 09:59:47 2020
 
-@author: 
+@author:
 """
 
 """
@@ -47,20 +47,20 @@ class card:
     #time displayed -> updates time attribute
   def repeat(self, quality, time):
     # SM-2 (name of algorithm)
-       
+
     #quality of the response (accuracy)
     assert quality >= 0 and quality <= 5
-    
+
     #update easiness based on quality
     self.easiness = max(1.3, self.easiness + 0.1 - (5.0 - quality) * (0.08 + (5.0 - quality) * 0.02))
-    
+
     if quality < 3: self.repetitions = 0
     #increment repeitition to keep track of number of times answered correctly in a row
     else: self.repetitions += 1
-    
+
     #if only answered right once, repeat one day later
     if self.repetitions == 1: self.interval = 1
-    
+
     #if twice in a row, repeat 6 days later (hardcoded)
     elif self.repetitions == 2: self.interval = 6
 
@@ -70,7 +70,7 @@ class card:
     self.time = time
 
     #seems like it just allows for cardA.is_new
-    #instead of cardA.is_new() 
+    #instead of cardA.is_new()
   is_new = property(is_new)
   next_time = property(next_time)
 
@@ -78,7 +78,7 @@ class card:
 def save(output, cards):
   for card in cards:
       #creates a tuple parts and prints it out
-      #card time of upcoming display,  repeated correct responses, 
+      #card time of upcoming display,  repeated correct responses,
       #interval til next display,  easiness
       #top data/string, bot data/string
       #printed with each attribute separated by a tab
@@ -132,16 +132,16 @@ def fetch_cards(cards, now, max_reviews=None, max_new=None, randomize=False):
   #FIFO
   new_cards = list(itertools.islice((c for c in cards if c.is_new), max_new))
   new_cards.reverse()
-  
-  #answered questions (time < now); 
+
+  #answered questions (time < now);
   #FIFO
   to_review = list(itertools.islice((c for c in cards if not c.is_new and c.next_time <= now), max_reviews))
   to_review.reverse()
-  
+
   #then not FIFO, instead random order of review
   if randomize:
     random.shuffle(to_review)
-    
+
     #treats to_review and new_cards as stacks
     #finishes review first
     #then uses the new_cards stack
@@ -152,7 +152,7 @@ def fetch_cards(cards, now, max_reviews=None, max_new=None, randomize=False):
       return new_cards.pop()
     else:
       return None
-  
+
     #takes a new card
     #if its new add to new card stack
     #if not add to to_review
@@ -170,15 +170,15 @@ def run_cards(cards, now, review_card, max_reviews=None, max_new=None, randomize
 
   while True:
     current = choose_next()
-    
+
     #if finished with everything
     if current is None:
       break
     quality = review_card(current)
-    
+
     #basically updtes each card's schedule
     current.repeat(quality, now)
-    
+
     #calls reject_card to tell how to process it and which stack to add to
     if current.is_new:
       reject_card(current)
@@ -198,7 +198,7 @@ def bulk_review(cards, now, batch_size, show_batch, review_card, max_reviews=Non
       card.repeat(quality, now)
       return quality
     batch = [c for c in batch for r in [run_card(c)] if c.is_new]
-    
+
     while len(batch) < batch_size:
       next = choose_next()
       if next is None:

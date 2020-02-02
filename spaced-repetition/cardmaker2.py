@@ -4,8 +4,7 @@ Created on Sat Feb  1 16:18:08 2020
 
 @author: aaron
 """
-
-
+# Convert excel file to a deck of cards
 
 import cards
 import pandas as pd
@@ -23,14 +22,14 @@ def load_data(input):
 if __name__ == "__main__":
   import datetime
   import argparse
-  
+
   ap = argparse.ArgumentParser();
   #ap.add_argument("-o", "--output", required=True, help="any file")
   ap.add_argument("-c", "--cards", required=True, help="output file, usu example.cards")
-  
+
   ap.add_argument("-x", "--excel_dataset", required=False,default = 'decks/temp.xlsx',
                   help="file with notecard data")
-  
+
   args = vars(ap.parse_args())
   df = pd.read_excel('decks2/temp.xlsx').to_dict()
   print(df)
@@ -38,10 +37,10 @@ if __name__ == "__main__":
   #not the same output File
   #outputFile = open(args["output"], 'w')
   outputFile = open("temp.txt", 'w')
-  
+
   for key in df["Pinyin"]:
       outputFile.write(str(df["Character"][key]) + '\t' + str(df["Pinyin"][key]) + '\n')
-  
+
   #for column in df.keys():
   #    for key in df[column]:
           #print(key)
@@ -53,4 +52,3 @@ if __name__ == "__main__":
   #inputFile = open(args["tsv"], 'r')
   #outputFile = open(args["output"], 'w')
   cards.save(outputFile, (cards.card(top, bot, now) for top, bot in load_data(inputFile)))
-  

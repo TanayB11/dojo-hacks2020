@@ -25,7 +25,7 @@ if __name__ == "__main__":
   import argparse
   
   ap = argparse.ArgumentParser();
-  ap.add_argument("-o", "--output", required=True, help="any file")
+  #ap.add_argument("-o", "--output", required=True, help="any file")
   ap.add_argument("-c", "--cards", required=True, help="output file, usu example.cards")
   
   ap.add_argument("-x", "--excel_dataset", required=False,default = 'decks/temp.xlsx',
@@ -36,7 +36,9 @@ if __name__ == "__main__":
   print(df)
   now = datetime.datetime.now()
   #not the same output File
-  outputFile = open(args["output"], 'w')
+  #outputFile = open(args["output"], 'w')
+  outputFile = open("temp.txt", 'w')
+  
   for key in df["Pinyin"]:
       outputFile.write(str(df["Pinyin"][key]) + '\t' + str(df["Character"][key]) + '\n')
   
@@ -46,7 +48,7 @@ if __name__ == "__main__":
           #print(type(df[column][key]))
   #        outputFile.write(str(key) + '\t' + str(df[column][key]) + '\n')
   outputFile.close()
-  inputFile = open(args["output"], 'r');
+  inputFile = open("temp.txt", 'r');
   outputFile = open(args["cards"], 'w');
   #inputFile = open(args["tsv"], 'r')
   #outputFile = open(args["output"], 'w')

@@ -31,7 +31,7 @@ if __name__ == "__main__":
                   help="file with notecard data")
 
   args = vars(ap.parse_args())
-  df = pd.read_excel('decks2/temp.xlsx').to_dict()
+  df = pd.read_excel('decks/temp.xlsx').to_dict()
   print(df)
   now = datetime.datetime.now()
   #not the same output File

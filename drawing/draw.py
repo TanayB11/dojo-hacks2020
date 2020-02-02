@@ -30,7 +30,7 @@ cv2.resize(image, (250, 250))
 cv2.namedWindow('')
 cv2.setMouseCallback('',paint_draw)
 while(1):
-    cv2.imshow('',image)
+    cv2.imshow('i',image)
     k=cv2.waitKey(1)& 0xFF
     if k==32: #space KEY
         cv2.imwrite("image.png",image)

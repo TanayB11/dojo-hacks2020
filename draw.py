@@ -13,13 +13,13 @@ def paint_draw(event,former_x,former_y,flags,param):
     elif event==cv2.EVENT_MOUSEMOVE:
         if drawing==True:
             if mode==True:
-                cv2.line(image,(current_former_x,current_former_y),(former_x,former_y),(0,0,0),10) #232, 239, 250
+                cv2.line(image,(current_former_x,current_former_y),(former_x,former_y),(0,0,0),15) #232, 239, 250
                 current_former_x = former_x
                 current_former_y = former_y
     elif event==cv2.EVENT_LBUTTONUP:
         drawing=False
         if mode==True:
-            cv2.line(image,(current_former_x,current_former_y),(former_x,former_y),(0,0,0),10)
+            cv2.line(image,(current_former_x,current_former_y),(former_x,former_y),(0,0,0),15)
             current_former_x = former_x
             current_former_y = former_y
     return former_x,former_y

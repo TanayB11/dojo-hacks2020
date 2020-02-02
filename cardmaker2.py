@@ -40,7 +40,7 @@ if __name__ == "__main__":
   outputFile = open("temp.txt", 'w')
   
   for key in df["Pinyin"]:
-      outputFile.write(str(df["Pinyin"][key]) + '\t' + str(df["Character"][key]) + '\n')
+      outputFile.write(str(df["Character"][key]) + '\t' + str(df["Pinyin"][key]) + '\n')
   
   #for column in df.keys():
   #    for key in df[column]:

@@ -7,7 +7,7 @@ A flashcard app complete with spaced repetition and Chinese handwriting recognit
 1. Clone this repository (dojo-hacks2020) to your computer
 2. Modify **my-deck.xlsx** in Excel to add your own questions and answers
 3. Navigate to **src** in your terminal
-4. Run ```python3 cardmaker.py -c decks/my-deck.xlsx``` to convert your Excel file into a .cards format. You only need to do this once.
+4. Run ```python3 cardmaker.py -c decks/my-deck.xlsx``` to convert your Excel file into the **.cards format.** You only need to do this once.
 5. Run ```python3 app.py -c x1.cards``` and start learning!
 
 ### FAQs

@@ -3,6 +3,11 @@
 
 A flashcard app complete with spaced repetition and Chinese handwriting recognition.
 
+### Inspiration
+We noticed that essentially all language-learning apps on the internet are lacking in one of a few ways: They either are ineffective, expensive, don't support spaced repetition, have ads, are not open source, or don't support handwriting. As handwriting is a crucial feature in learning new languages, especially ones such as Chinese, Japanese, or Arabic, we decided to create CVCards.
+
+CVCards is a simple, open source application that allows users to create flashcards and practice their handwriting with the help of deep learning. It also utilizes spaced repetition, an algorithm that ensures students retain what they learn.
+
 ### Instructions
 1. Clone this repository (dojo-hacks2020) to your computer
 2. Modify **my-deck.xlsx** in Excel to add your own questions and answers

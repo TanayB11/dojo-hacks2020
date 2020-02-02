@@ -25,24 +25,29 @@ if __name__ == "__main__":
   import argparse
   
   ap = argparse.ArgumentParser();
-  ap.add_argument("-o", "--output", required=True, help="output file, usu example.cards")
+  ap.add_argument("-o", "--output", required=True, help="any file")
+  ap.add_argument("-c", "--cards", required=True, help="output file, usu example.cards")
+  
   ap.add_argument("-x", "--excel_dataset", required=False,default = 'decks/temp.xlsx',
                   help="file with notecard data")
   
   args = vars(ap.parse_args())
-  df = pd.read_excel('decks/temp.xlsx').to_dict()
+  df = pd.read_excel('decks2/temp.xlsx').to_dict()
   print(df)
   now = datetime.datetime.now()
   #not the same output File
   outputFile = open(args["output"], 'w')
-  for column in df.keys():
-      for key in df[column]:
+  for key in df["Pinyin"]:
+      outputFile.write(str(df["Pinyin"][key]) + '\t' + str(df["Character"][key]) + '\n')
+  
+  #for column in df.keys():
+  #    for key in df[column]:
           #print(key)
           #print(type(df[column][key]))
-          print(str(key) + '\t' + str(df[column][key]), file = outputFile)
-  
-  inputFile = open(outputFile, 'r');
-  outputFile = open(args["output"], 'w');
+  #        outputFile.write(str(key) + '\t' + str(df[column][key]) + '\n')
+  outputFile.close()
+  inputFile = open(args["output"], 'r');
+  outputFile = open(args["cards"], 'w');
   #inputFile = open(args["tsv"], 'r')
   #outputFile = open(args["output"], 'w')
   cards.save(outputFile, (cards.card(top, bot, now) for top, bot in load_data(inputFile)))

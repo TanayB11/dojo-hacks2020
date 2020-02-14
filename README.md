@@ -1,5 +1,6 @@
 # CVCards
 ## Vineet R., Aaron S., Yash R., Matthew L., Tanay B.
+### 1st Place at DojoHacks 2020
 
 A flashcard app complete with spaced repetition and Chinese handwriting recognition.
 
